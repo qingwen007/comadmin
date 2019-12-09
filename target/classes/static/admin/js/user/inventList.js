@@ -92,7 +92,7 @@ layui.use(['layer','form','table'], function() {
 
     //功能按钮
     var active={
-        addUser : function(){
+        addInvent : function(){
             var addIndex = layer.open({
                 title : "添加物料",
                 type : 2,

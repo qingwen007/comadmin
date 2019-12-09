@@ -34,4 +34,9 @@ public class InventtableServiceImpl extends ServiceImpl<InventtableMapper, Inven
         baseMapper.updateById(inventtable);
 
     }
+
+    @Override
+    public void saveInvent(Inventtable inventtable) {
+        baseMapper.insert(inventtable);
+    }
 }

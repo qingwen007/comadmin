@@ -3,7 +3,7 @@
       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="utf-8">
-    <title>用户添加--后台管理</title>
+    <title>物料添加--后台管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -30,72 +30,58 @@
 <form class="layui-form" style="width:80%;margin-top: 2%;">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">登录名</label>
+            <label class="layui-form-label">物料编号</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="loginName" lay-verify="required" placeholder="请输入登录名">
+                <input type="text" class="layui-input" name="itemId" lay-verify="required" placeholder="请输入物料编号">
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">昵称</label>
+            <label class="layui-form-label">物料名称</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="nickName" placeholder="请输入昵称">
+                <input type="text" class="layui-input" name="itemName" lay-verify="required" placeholder="请输入物料名称">
             </div>
         </div>
     </div>
     <div class="layui-form-item">
-
         <div class="layui-inline">
-            <label class="layui-form-label">邮箱</label>
+            <label class="layui-form-label">物料组</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="email" lay-verify="email" placeholder="请输入邮箱">
+                <input type="text" class="layui-input" name="itemGroup" lay-verify="required" placeholder="请输入物料组">
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">手机</label>
+            <label class="layui-form-label">英文名称</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="tel" lay-verify="phone" placeholder="请输入邮箱">
-            </div>
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">用户角色</label>
-        <div class="layui-input-block role-box">
-            <div class="jq-role-inline">
-                <fieldset class="layui-elem-field">
-                    <legend>选择角色</legend>
-                    <div class="layui-field-box" th:each="role : ${roleList}">
-                        <input type="checkbox" name="roles"  th:value="${role.id}" th:title="${role.name}" lay-filter="role" />
-                    </div>
-                </fieldset>
+                <input type="text" class="layui-input" name="englishName" lay-verify="required" placeholder="请输入英文名称">
             </div>
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">用户类型</label>
+            <label class="layui-form-label">颜色</label>
             <div class="layui-input-block">
-                <input type="checkbox" th:id="adminUser"  name="adminUser" th:value="true" lay-filter="adminUser" lay-skin="switch" value="true"  lay-text="后台用户|前台用户" checked/>
+                <input type="text" class="layui-input" name="colorName" lay-verify="required" placeholder="请输入颜色">
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">是否启用</label>
+            <label class="layui-form-label">材质</label>
             <div class="layui-input-block">
-                <input type="checkbox" th:id="locked" name="locked" th:value="true" lay-skin="switch"  lay-filter="locked"  lay-text="启用|停用" checked>
+                <input type="text" class="layui-input" name="material" lay-verify="required" placeholder="请输入材质">
             </div>
         </div>
     </div>
 
-    <shiro:hasPermission name="sys:user:add">
+    <shiro:hasPermission name="inv:InventTable:add">
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="addUser">立即提交</button>
+            <button class="layui-btn" lay-submit="" lay-filter="addInvent">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
     </shiro:hasPermission>
 </form>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
-<script type="text/javascript" th:src="@{/static/admin/js/user/userAdd.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/user/inventAdd.js}"></script>
 </body>
 </html>

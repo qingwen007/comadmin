@@ -3,6 +3,7 @@ package com.xiaoshu.invent.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.xiaoshu.common.base.DataEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -21,9 +22,9 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("Inv_InventTable")
-public class Inventtable implements Serializable {
+public class Inventtable extends DataEntity<Inventtable> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
 
     @TableId("ItemId")
     private String itemId;

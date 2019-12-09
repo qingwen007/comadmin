@@ -16,4 +16,6 @@ public interface InventtableService extends IService<Inventtable> {
     Inventtable findInventByItemId(String itemId);
 
     void updateInvent(Inventtable inventtable);
+
+    void saveInvent(Inventtable inventtable);
 }

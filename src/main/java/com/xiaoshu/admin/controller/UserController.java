@@ -148,6 +148,23 @@ public class UserController {
         return ResponseEntity.success("操作成功");
     }
 
+    @GetMapping("addInvent")
+    public String addInvent(ModelMap modelMap){
+
+        return "admin/user/addInvent";
+    }
+
+    @RequiresPermissions("inv:inventTable:add")
+    @PostMapping("addInvent")
+    @ResponseBody
+    @SysLog("保存新增物料数据")
+    public ResponseEntity addInvent(@RequestBody  Inventtable inventtable){
+
+        inventtableService.saveInvent(inventtable);
+
+        return ResponseEntity.success("操作成功");
+    }
+
     @GetMapping("edit")
     public String edit(String id,ModelMap modelMap){
         User user = userService.findUserById(id);
