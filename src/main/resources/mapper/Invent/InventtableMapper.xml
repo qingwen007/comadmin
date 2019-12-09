@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.invent.mapper.InventtableMapper">
+    <resultMap type="com.xiaoshu.invent.entity.Inventtable" id="InventMap">
+        <result property="itemId" column="ItemId"/>
+        <result property="itemName" column="ItemName"/>
+        <result property="itemGroup" column="ItemGroup"/>
+        <result property="englishName" column="EnglishName"/>
+        <result property="colorName"  column="ColorName"/>
+        <result property="material"  column="Material"/>
+    </resultMap>
+    <select id="selectInventByMap" parameterType="java.util.Map" resultMap="InventMap">
+        SELECT
+        u.itemId,
+        u.itemName,
+        u.itemGroup,
+        u.englishName,
+        u.colorName,
+        u.material
+        from
+        Inv_InventTable u
+        where
+        1=1
+        <if test="itemId !=null and itemId !=''">
+            and (
+            u.itemId = #{itemId}
+            )
+        </if>
+    </select>
+</mapper>
