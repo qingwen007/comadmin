@@ -1,7 +1,7 @@
 package com.xiaoshu.invent.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xiaoshu.invent.entity.Inventtable;
+import com.xiaoshu.invent.entity.InventTable;
 
 /**
  * <p>
@@ -11,11 +11,11 @@ import com.xiaoshu.invent.entity.Inventtable;
  * @author Jeff
  * @since 2019-12-05
  */
-public interface InventtableService extends IService<Inventtable> {
+public interface InventtableService extends IService<InventTable> {
 
-    Inventtable findInventByItemId(String itemId);
+    InventTable findInventByItemId(String itemId);
 
-    void updateInvent(Inventtable inventtable);
+    void updateInvent(InventTable inventtable);
 
-    void saveInvent(Inventtable inventtable);
+    void saveInvent(InventTable inventtable);
 }

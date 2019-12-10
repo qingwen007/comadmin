@@ -19,10 +19,8 @@ import java.io.Serializable;
  * @since 2019-12-05
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @TableName("Inv_InventTable")
-public class Inventtable extends DataEntity<Inventtable> implements Serializable {
+public class InventTable extends DataEntity<InventTable> {
 
     //private static final long serialVersionUID = 1L;
 

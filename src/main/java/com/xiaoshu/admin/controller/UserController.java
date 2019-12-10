@@ -14,7 +14,7 @@ import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.util.Constants;
 import com.xiaoshu.common.util.Encodes;
 import com.xiaoshu.common.util.ResponseEntity;
-import com.xiaoshu.invent.entity.Inventtable;
+import com.xiaoshu.invent.entity.InventTable;
 import com.xiaoshu.invent.service.InventtableService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -57,12 +57,12 @@ public class UserController {
     @RequiresPermissions("inv:inventTable:list")
     @PostMapping("inventList")
     @ResponseBody
-    public PageData<Inventtable> inventList(@RequestParam(value = "page",defaultValue = "1")Integer page,
+    public PageData<InventTable> inventList(@RequestParam(value = "page",defaultValue = "1")Integer page,
                                             @RequestParam(value = "limit",defaultValue = "10")Integer limit,
                                             ServletRequest request){
         Map map = WebUtils.getParametersStartingWith(request, "s_");
-        PageData<Inventtable> userPageData = new PageData<>();
-        QueryWrapper<Inventtable> userWrapper = new QueryWrapper<>();
+        PageData<InventTable> userPageData = new PageData<>();
+        QueryWrapper<InventTable> userWrapper = new QueryWrapper<>();
         if(!map.isEmpty()){
 
             String keys = (String) map.get("key");
@@ -70,7 +70,7 @@ public class UserController {
                 userWrapper.and(wrapper -> wrapper.like("ItemId", keys).or().like("ItemName", keys).or().like("Material", keys));
             }
         }
-        IPage<Inventtable> userPage = inventtableService.page(new Page<>(page,limit),userWrapper);
+        IPage<InventTable> userPage = inventtableService.page(new Page<>(page,limit),userWrapper);
         userPageData.setCount(userPage.getTotal());
         userPageData.setData(userPage.getRecords());
         return userPageData;
@@ -158,7 +158,7 @@ public class UserController {
     @PostMapping("addInvent")
     @ResponseBody
     @SysLog("保存新增物料数据")
-    public ResponseEntity addInvent(@RequestBody  Inventtable inventtable){
+    public ResponseEntity addInvent(@RequestBody InventTable inventtable){
 
         inventtableService.saveInvent(inventtable);
 
@@ -227,7 +227,7 @@ public class UserController {
 
     @GetMapping("editInvent")
     public String editInvent(String itemId,ModelMap modelMap){
-        Inventtable inventtable = inventtableService.findInventByItemId(itemId);
+        InventTable inventtable = inventtableService.findInventByItemId(itemId);
         modelMap.put("inventTable",inventtable);
         return "admin/user/editInvent";
     }
@@ -236,7 +236,7 @@ public class UserController {
     @PostMapping("editInvent")
     @ResponseBody
     @SysLog("保存物料编辑数据")
-    public ResponseEntity editInvent(@RequestBody  Inventtable inventtable){
+    public ResponseEntity editInvent(@RequestBody  InventTable inventtable){
         if(StringUtils.isBlank(inventtable.getItemName())){
             return ResponseEntity.failure("物料名称不能为空");
         }

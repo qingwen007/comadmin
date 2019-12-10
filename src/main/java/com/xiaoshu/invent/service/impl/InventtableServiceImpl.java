@@ -1,7 +1,7 @@
 package com.xiaoshu.invent.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xiaoshu.invent.entity.Inventtable;
+import com.xiaoshu.invent.entity.InventTable;
 import com.xiaoshu.invent.mapper.InventtableMapper;
 import com.xiaoshu.invent.service.InventtableService;
 import org.springframework.stereotype.Service;
@@ -19,10 +19,11 @@ import java.util.Map;
  * @since 2019-12-05
  */
 @Service
-public class InventtableServiceImpl extends ServiceImpl<InventtableMapper, Inventtable> implements InventtableService {
+@Transactional(rollbackFor = Exception.class)
+public class InventtableServiceImpl extends ServiceImpl<InventtableMapper, InventTable> implements InventtableService {
 
     @Override
-    public Inventtable findInventByItemId(String itemId) {
+    public InventTable findInventByItemId(String itemId) {
         Map<String,Object> map = new HashMap();
         map.put("itemId", itemId);
         return baseMapper.selectInventByMap(map);
@@ -30,13 +31,14 @@ public class InventtableServiceImpl extends ServiceImpl<InventtableMapper, Inven
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void updateInvent(Inventtable inventtable) {
+    public void updateInvent(InventTable inventtable) {
         baseMapper.updateById(inventtable);
 
     }
 
     @Override
-    public void saveInvent(Inventtable inventtable) {
+    @Transactional(rollbackFor = Exception.class)
+    public void saveInvent(InventTable inventtable) {
         baseMapper.insert(inventtable);
     }
 }

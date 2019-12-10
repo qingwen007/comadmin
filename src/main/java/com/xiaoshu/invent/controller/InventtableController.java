@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.base.PageData;
-import com.xiaoshu.invent.entity.Inventtable;
+import com.xiaoshu.invent.entity.InventTable;
 import com.xiaoshu.invent.service.InventtableService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -42,12 +42,12 @@ public class InventtableController {
     @RequiresPermissions("inv:inventTable:list")
     @PostMapping("list")
     @ResponseBody
-    public PageData<Inventtable> list(@RequestParam(value = "page",defaultValue = "1")Integer page,
+    public PageData<InventTable> list(@RequestParam(value = "page",defaultValue = "1")Integer page,
                                @RequestParam(value = "limit",defaultValue = "10")Integer limit,
                                ServletRequest request){
         Map map = WebUtils.getParametersStartingWith(request, "s_");
-        PageData<Inventtable> inventPageData = new PageData<>();
-        QueryWrapper<Inventtable> inventWrapper = new QueryWrapper<>();
+        PageData<InventTable> inventPageData = new PageData<>();
+        QueryWrapper<InventTable> inventWrapper = new QueryWrapper<>();
         if(!map.isEmpty()){
 
             String keys = (String) map.get("key");
@@ -55,7 +55,7 @@ public class InventtableController {
                 inventWrapper.and(wrapper -> wrapper.like("itemId", keys).or().like("itemName", keys).or().like("material", keys));
             }
         }
-        IPage<Inventtable> inventPage = inventtableService.page(new Page<>(page,limit),inventWrapper);
+        IPage<InventTable> inventPage = inventtableService.page(new Page<>(page,limit),inventWrapper);
         inventPageData.setCount(inventPage.getTotal());
         inventPageData.setData(inventPage.getRecords());
         return inventPageData;
