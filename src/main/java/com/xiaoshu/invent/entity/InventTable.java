@@ -1,5 +1,6 @@
 package com.xiaoshu.invent.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -7,6 +8,7 @@ import com.xiaoshu.common.base.DataEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.omg.CORBA.IDLType;
 
 import java.io.Serializable;
 
@@ -23,6 +25,8 @@ import java.io.Serializable;
 public class InventTable extends DataEntity<InventTable> {
 
     //private static final long serialVersionUID = 1L;
+  /*  @TableId(type= IdType.UUID)
+    private String id;*/
 
     @TableId("ItemId")
     private String itemId;

@@ -174,3 +174,50 @@ CREATE TABLE `sys_user_role` (
 -- Records of sys_user_role
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES ('18b8b543-9ad7-11e8-aebe-1368d4ec24eb', '706e0195-9ad7-11e8-aebe-1368d4ec24eb');
+
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50534
+Source Host           : localhost:3306
+Source Database       : comadmin
+
+Target Server Type    : MYSQL
+Target Server Version : 50534
+File Encoding         : 65001
+
+Date: 2019-12-10 15:49:34
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for inv_inventtable
+-- ----------------------------
+DROP TABLE IF EXISTS `inv_inventtable`;
+CREATE TABLE `inv_inventtable` (
+  `id` varchar(36) NOT NULL COMMENT '物料ID',
+  `ItemId` varchar(15) NOT NULL,
+  `ItemName` varchar(50) DEFAULT NULL,
+  `ItemGroup` varchar(20) DEFAULT NULL,
+  `EnglishName` varchar(100) DEFAULT NULL,
+  `ColorName` varchar(10) DEFAULT NULL,
+  `Material` varchar(10) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `del_flag` tinyint(4) DEFAULT NULL,
+  `remarks` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of inv_inventtable
+-- ----------------------------
+INSERT INTO `inv_inventtable` VALUES ('3b5ec075-ecb7-4f73-8f69-35f971affcff', '9AC10002', '鳄鱼皮包包', '成品', 'eyu', '黑色', '鳄鱼皮', null, null, null, null, '0', null);
+INSERT INTO `inv_inventtable` VALUES ('66449eb2-14cd-4712-8926-0fa2ef21b094', '9AC10001', '牛皮包包', '成品', 'niupi', '蓝色', '牛皮', null, null, null, null, '0', null);
+INSERT INTO `inv_inventtable` VALUES ('756df0be-8fe8-4063-9f7c-86aa59dbe55f', '9AC10003', '针织包包', '成品', 'zhenz', '黄色', '织布', null, null, null, null, '0', null);
+
